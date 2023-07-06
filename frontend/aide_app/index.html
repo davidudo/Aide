@@ -1,0 +1,235 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aide Robot Control App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Side Nav Bar -->
+    <nav class="side-bar">
+        <a href="">
+            <h2>AIDE</h2>
+        </a>
+
+        <div>
+            <a href="#" class="active"><i class="fas fa-map-marked-alt"></i></a>
+            <a href="#"><i class="fas fa-shipping-fast"></i></a>
+            <a href="#"><i class="fas fa-user-circle"></i></a>
+        </div>
+    </nav>
+    <!-- Side Nav Bar Ends -->
+
+    <main class="app">
+        <!-- Control Panel -->
+        <section class="control-panel">
+            <div class="row-01">
+                <!-- Live video footage from the robot-->
+                <div class="video-footage">
+                    <img src="img/video.jpg" alt="Video footage from robot">
+                    <div>
+                        <span>LIVE</span>
+                    </div>
+                </div>
+
+                <!-- Google map showing real time robot position -->
+                <div class="map">
+                    <img src="img/map.jpg" alt="Google map showing robot position">
+                </div>
+
+                <!-- Robot status information -->
+                <div class="robot-status">
+                    <header>
+                        <h2>AIDE Model AKSU/01</h2>
+                        <span>Robot's Status</span>
+                    </header>
+
+                    <div class="info-card">
+                        <div>
+                            <p>Battery Level</p>
+                            <span>----</span>
+                        </div>
+                        <span>----</span>
+                    </div>
+
+                    <div class="info-card">
+                        <div>
+                            <p>WiFi</p>
+                            <span id="wifi">----</span>
+                        </div>
+                        <span>----</span>
+                    </div>
+
+                    <div class="info-card">
+                        <div>
+                            <p>GPS</p>
+                            <span>----</span>
+                        </div>
+                        <span>----</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-02">
+                <div class="row-02-01">
+                    <!-- Robot Feedback Terminal-->
+                    <div class="robot-feedback-terminal">
+                        <h3>Robot Feedback Terminal</h3>
+                        <div class="feedback-info-terminal">
+                            <!-- <p>Robot setting up...</p>
+                            <p>Robot ready to move!</p>
+                            <p>Encountered an obstacle</p>
+                            <p>Can't move, in need of immediate assistance</p> -->
+                        </div>
+                    </div>
+
+                    <!-- Robot ON/OFF Control Buttons -->
+                    <div class="on-off-buttons">
+                        <!-- Q (Buzzer On) || W (Buzzer Off) -->
+                        <button id="buzzer" onmousedown="sendCommand('Q')" onmouseup="sendCommand('W')">
+                            <i class="fas fa-volume-down"></i>
+                        </button>
+                        <!-- E (Unlock Door) || T (Lock Door) -->
+                        <button id="door-lock" onmousedown="sendCommand('E')" onmouseup="sendCommand('T')">
+                            <i class="fas fa-unlock"></i>
+                        </button>
+                        <!-- Y (Auto Forward) -->
+                        <button id="auto-forward" onclick="sendCommand('Y')">
+                            <i class="fas fa-angle-double-up"></i>
+                        </button>
+                    </div>
+
+                    <!-- Robot Movement Control Buttons -->
+                    <div class="movement-control-buttons">
+                        <div class="btn-row-01">     
+                            <!-- F (Forward) -->
+                            <button id="forward" onmousedown="sendCommand('F')" onmouseup="stopCommand()">
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+                        <div class="btn-row-02">
+                            <!-- L (Left) -->
+                            <button id="left" onmousedown="sendCommand('L')" onmouseup="stopCommand()">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <!-- S (Stop) -->
+                            <button id="stop" onclick="sendCommand('S')" class="stop">
+                                <i class="fas fa-stop"></i>
+                            </button>
+                            <!-- R (Right) -->
+                            <button id="right" onmousedown="sendCommand('R')" onmouseup="stopCommand()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="btn-row-03">
+                            <!-- B (Backward) -->
+                            <button id="backward" onmousedown="sendCommand('B')" onmouseup="stopCommand()">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robot Travelling Information -->
+                <div class="row-02-02">
+                    <div class="row-02-02-01">
+                        <div class="robot-info-card">
+                            <p>Robot ID</p>
+                            <span>----</span>
+                        </div>
+                        <div class="robot-info-card">
+                            <p>Package ID</p>
+                            <span>----</span>
+                        </div>
+                        <div class="robot-info-card">
+                            <p>Delivery Location</p>
+                            <span>----</span>
+                        </div>
+                        <div class="robot-info-card">
+                            <p>Package Weight</p>
+                            <span>----</span>
+                        </div>
+                    </div>
+                    <div class="row-02-02-02">
+                        <div class="robot-info-card">
+                            <p>Distance Travelled</p>
+                            <span>---- km</span>
+                        </div>
+                        <div class="robot-info-card">
+                            <p>Travel Time</p>
+                            <span>---- mins</span>
+                        </div>
+                        <div class="robot-info-card">
+                            <p>Compass</p>
+                            <span>----</span>
+                        </div>
+                        <div class="robot-info-card">
+                            <p>Speed</p>
+                            <span>---- m/s</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Control Panel Ends -->
+    </main>
+    <!-- Main Ends -->
+
+    <!-- Javascript -->
+    <script>
+        // Get html elements
+        const terminal = document.getElementsByClassName('feedback-info-terminal');
+        const wifi = document.getElementById('wifi');
+
+        // Robot feedback terminal (Robot Setting Up)
+        terminal[0].innerHTML += "<p>Robot setting up...</p>";
+
+        // Create a new WebSocket connection
+        const socket = new WebSocket('ws://localhost:8080');
+
+        // Function to send a command to the server
+        function sendCommand(command) {
+            socket.send(command);
+            console.log('Sent command:', command);
+        }
+
+        // Function to stop sending the command
+        function stopCommand() {
+            socket.send('S');
+            console.log('Sent command: S');
+        }
+
+        socket.onmessage = function (event) {
+            const message = event.data;
+            console.log('Received message:', message);
+
+            // Handle incoming message from server
+            switch (message) {
+                case "Connectedz":
+                    // Append feedback statement to terminal container
+                    terminal[0].innerHTML += "<p>Robot successfully connected</p>";
+                    terminal[0].innerHTML += "<p style='color:#C6B850;'>Robot ready for delivery!</p>";
+
+                    // Change text in wifi span
+                    wifi.innerHTML = "Connected";
+                    break;
+            
+                default:
+                    break;
+            }
+
+            // Parse message to Javascript object
+            const sensor = JSON.parse(message);
+            const sensorName = sensor.sensor_name;
+
+            console.log(sensorName);
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

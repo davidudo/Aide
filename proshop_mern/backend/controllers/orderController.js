@@ -1,5 +1,8 @@
 import asyncHandler from 'express-async-handler'
 import Order from '../models/orderModel.js'
+import sendMail from '../utils/sendMail.js'
+import orderDeliveryInfo from '../utils/email_templates/orderDeliveryInfo.js'
+import generatePasswordPin from '../utils/generatePasswordPin.js'
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -71,6 +74,16 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     }
 
     const updatedOrder = await order.save()
+
+    // Send email to customer
+    const pin = generatePasswordPin()
+
+    const sender_email = 'delivery@aiderobotics.com'
+    const receiver_email = 'udodavid46.ud@gmail.com'
+    const email_subject = 'Your Order Is On Its Way!'
+    const email_body = orderDeliveryInfo(order, pin)
+
+    sendMail(sender_email, receiver_email, email_subject, email_body)
 
     res.json(updatedOrder)
   } else {

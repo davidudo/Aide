@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aide Robot Control App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/requests.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Side Nav Bar -->
+    <nav class="side-bar">
+        <h2>AIDE</h2>
+
+        <div>
+            <a href="#" class="active"><i class="fas fa-map-marked-alt"></i></a>
+            <a href="#"><i class="fas fa-shipping-fast"></i></a>
+            <a href="#"><i class="fas fa-user-circle"></i></a>
+        </div>
+    </nav>
+    <!-- Side Nav Bar Ends -->
+
+    <main class="app">
+        <!-- Delivery Requests Table -->
+        <section class="delivery-requests">
+            <h2>Delivery Requests</h2>
+            
+            <div class="table">
+                <div class="table-header">
+                    <div class="header__item">S/N</div>
+                    <div class="header__item">ID</div>
+                    <div class="header__item">Pickup Address</div>
+                    <div class="header__item">Delivery Address</div>
+                    <div class="header__item">Package Details</div>
+                    <div class="header__item">Status</div>
+                </div>
+                <div class="table-content">	
+                    <div class="table-row">		
+                        <div class="table-data">1</div>
+                        <div class="table-data">615fa1b4a1</div>
+                        <div class="table-data">123 Main St, Apt 3B</div>
+                        <div class="table-data">456 Oak St, Suite 200</div>
+                        <div class="table-data">Large box, Fragile, Handle...</div>
+                        <div>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-row">		
+                        <div class="table-data">1</div>
+                        <div class="table-data">615fa1b4a1</div>
+                        <div class="table-data">123 Main St, Apt 3B</div>
+                        <div class="table-data">456 Oak St, Suite 200</div>
+                        <div class="table-data">Large box, Fragile, Handle...</div>
+                        <div>
+                            Accepted
+                        </div>
+                    </div>
+                    <div class="table-row">		
+                        <div class="table-data">1</div>
+                        <div class="table-data">615fa1b4a1</div>
+                        <div class="table-data">123 Main St, Apt 3B</div>
+                        <div class="table-data">456 Oak St, Suite 200</div>
+                        <div class="table-data">Large box, Fragile, Handle...</div>
+                        <div>
+                            Rejected
+                        </div>
+                    </div>
+                    <div class="table-row">		
+                        <div class="table-data">1</div>
+                        <div class="table-data">615fa1b4a1</div>
+                        <div class="table-data">123 Main St, Apt 3B</div>
+                        <div class="table-data">456 Oak St, Suite 200</div>
+                        <div class="table-data">Large box, Fragile, Handle...</div>
+                        <div>
+                            In Transit
+                        </div>
+                    </div>
+                    <div class="table-row">		
+                        <div class="table-data">1</div>
+                        <div class="table-data">615fa1b4a1</div>
+                        <div class="table-data">123 Main St, Apt 3B</div>
+                        <div class="table-data">456 Oak St, Suite 200</div>
+                        <div class="table-data">Large box, Fragile, Handle...</div>
+                        <div>
+                            Delivered
+                        </div>
+                    </div>
+                </div>	
+            </div>
+        </section>
+        <!-- Delivery Requests Table Ends-->
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>

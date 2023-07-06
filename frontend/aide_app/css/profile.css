@@ -1,0 +1,99 @@
+.blue {
+    background-color: #97B5BF;
+}
+
+.red {
+    background-color: #D1555A;
+}
+
+.green {
+    background-color: #C6B850;
+}
+
+.app section {
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+    height: 10rem;
+    width: auto;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+section .driver-email {
+    font-size: 18px;
+    font-weight: 400;
+    color: #D3CBCB;
+}
+
+section .driver-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+section .driver-rating i {
+    font-size: 20px;
+    color: #F2AA66;
+}
+
+section .driver-stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 12px 0;
+}
+
+section .driver-stat div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 13rem;
+    padding: 20px;
+    gap: 5px;
+    border-radius: 16px;
+}
+
+section .driver-stat div p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+section .driver-stat div span {
+    font-size: 25px;
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        padding: 30px;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    section .driver-stat {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    section .driver-stat div {
+        width: 100%;
+    }
+}

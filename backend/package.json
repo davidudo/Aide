@@ -8,9 +8,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "start:dev": "npx nodemon app.js",
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
-    "seed:db": "node db.seed.js"
+    "start:dev": "npx nodemon app.js"
   },
   "keywords": [
     "nodejs",
@@ -30,11 +28,6 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "joi": "^17.7.0",
-    "morgan-json": "^1.1.0",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^7.1.2",
-    "supertest": "^6.3.3",
-    "winston": "^3.8.2"
+    "ws": "^8.13.0"
   }
 }

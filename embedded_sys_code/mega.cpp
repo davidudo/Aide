@@ -20,9 +20,6 @@ const unsigned long DELAY_BETWEEN_READINGS = 500; // ms
 // Variables for the sonar sensors
 unsigned long previousMillis = 0;
 
-// unsigned long previousDataMillis = 0;  // variable to store the last time the data was sent
-const unsigned long dataInterval = 5000;
-
 // Function prototypes
 // volatile int pirSensorValue = LOW;
 
@@ -38,11 +35,11 @@ void setup() {
   }
 
   // Set up the motors
-  leftMotor.setSpeed(255); // Set initial motor speed to full
-  rightMotor.setSpeed(255); // Set initial motor speed to full
+  leftMotor.setSpeed(200); // Set initial motor speed to full
+  rightMotor.setSpeed(200); // Set initial motor speed to full
 
   // Set up the door lock
-  solenoidDoorLock.setSpeed(255);
+  solenoidDoorLock.setSpeed(200);
 
   // Set the buzzer pin as an output
   pinMode(buzzerPin, OUTPUT);
@@ -58,11 +55,6 @@ void setup() {
 void loop() {
   // get the current time
   // unsigned long currentDataMillis = millis();
-
-  // check if it's time to send the data
-  // if (currentDataMillis - previousDataMillis >= dataInterval) {
-  //   // update the previous time
-  //   previousDataMillis = currentDataMillis;
 
   //   // Send robot information and sensor values to web server
   //   sendJsonData(Serial3, "temperature", random(0, 100));
@@ -92,19 +84,20 @@ void loop() {
       // Serial.print(distance);
       // Serial.println(" cm");
 
-      if (distance > 0 && distance <= 10 && !stopped)
+      if (distance > 0 && distance <= 20 && !stopped)
       {
         stop();
         Serial.println("Stopping");
-        stopped = true;
+        // sendJsonData(Serial3, "sonar", "obstacle detected");
+        // stopped = true;
       }
     }
   }
 
   int sensorStatus = digitalRead(irPin); // Set the GPIO as Input
-  int sensorStatus2 = analogRead(irPin); // Set the GPIO as Input
-  
-  if (sensorStatus == 1 || sensorStatus2 <= 100) // Check if the pin high or not
+  // int analogueSensorRead = analogueRead(irPin);
+
+  if (sensorStatus == 1) // Check if the pin high or not
   {
     buzzerState = true;
   } else {
@@ -187,7 +180,8 @@ void stop() {
 }
 
 void playSound(int frequency, int duration) {
-  if (buzzerState) { // Only play the sound if the buzzer is on
+  if (buzzerState) {
+    // Only play the sound if the buzzer is on
     tone(buzzerPin, frequency, duration);
     delay(1000);
     noTone(buzzerPin);
@@ -212,7 +206,7 @@ void PIRSensor() {
 void sendJsonData(Stream& stream, const char* sensor, int value) {
   // Create a JSON object and serialize it
   StaticJsonDocument<256> doc;
-  doc["sensor"] = sensor;
+  doc["sensor_name"] = sensor;
   doc["value"] = value;
   char jsonStr[256];
   serializeJson(doc, jsonStr);
